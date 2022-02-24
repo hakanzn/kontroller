@@ -15,8 +15,10 @@
     <div class="form-group">
      <label for="pwd">Tarih:</label>
       <input type="text" class="form-control" id="tarih" name="tarih" disabled>
+      <br>
       <label for="pwd">Vardiya:</label>
       <input type="text" class="form-control" id="vardiya" name="vardiya" disabled>
+      <br>
       <label for="hatlist">Hat:</label>
       
       <select class="form-control" id="hatlar" name="hatlist">
@@ -40,7 +42,7 @@
         <option>16</option>
         
       </select>
-      
+      <br>
     
       <label for="pwd">Kalıp:</label>
       <input type="text" class="form-control" id="kalip" placeholder="Kalıp" name="kalip">
@@ -50,13 +52,13 @@
     <div class="col-lg-6 mb-4">
 	    <div class="form-check-inline">
 	      <label class="form-check-label" for="check1">
-		<input type="checkbox" class="form-check-input" id="check1" name="devrede" value="ok">YKC Devrede mi?
+		<input type="checkbox" class="form-check-input" id="check1" name="devrede" value="ok">YKC DEVREDE Mİ?
 	      </label>
 	    </div>
 	    <br>
 	    <div class="form-check-inline">
 	      <label class="form-check-label" for="check2">
-		<input type="checkbox" class="form-check-input" id="check2" name="boya" value="ok">Boya Atıyor mu?
+		<input type="checkbox" class="form-check-input" id="check2" name="boya" value="ok">BOYA ATIYOR MU?
 	      </label>
 	    </div>
 	    <br>
@@ -117,29 +119,28 @@ function serializeToJson(serializer){
     function ExportData()
     {
             filename='reports.xlsx';
+            data = serializeToJson($(form).serializeArray());
+            data.kalite = "NOK";
+            data.vardiya = vardiya_al();
+            data.tarih = tarih_al();
        data=[
        
-       	{
-       		"tarih": "test",
-       		"vardiya": "testvardiya",
-       		"hat": "sok9",
-       		"kalip": "3455",
-       		"ykc devrede mi": "e"
-       	}
+       	data
        
        ];
         var ws = XLSX.utils.json_to_sheet(data);
         var wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "TEST");
-        //XLSX.writeFile(wb,filename);
+        XLSX.writeFile(wb,filename);
      }
      
-     ExportData();
+     
      
      function kontrol(form){
       //alert("test aşaması");
        data_ = serializeToJson($(form).serializeArray());
        alert(JSON.stringify(data_));
+       ExportData();
        return false;
      
      }
