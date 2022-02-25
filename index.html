@@ -10,7 +10,7 @@
 <body>
 
 <div class="container">
-	<br>
+    <br>
     <h3>YKC Takip Formu</h3>
     <form id="form" onsubmit="return kontrol(this)">
         <div class="form-group">
@@ -23,6 +23,7 @@
             <label for="hatlist">Hat:</label>
 
             <select class="form-control" id="hatlar" name="hatlist">
+                <option>Hat Seçin</option>
                 <option>9</option>
                 <option>10</option>
                 <option>2</option>
@@ -45,6 +46,7 @@
             </select>
             <br>
 
+
             <label for="pwd">Kalıp:</label>
             <input type="text" class="form-control" id="kalip" placeholder="Kalıp" name="kalip">
 
@@ -53,14 +55,16 @@
             <div class="col-lg-6 mb-4">
                 <div class="form-check-inline">
                     <label class="form-check-label" for="check1">
-                        <input type="checkbox" class="form-check-input" id="check1" name="devrede" value="ok">YKC
+                        <input type="checkbox" class="form-check-input" id="check1" name="devrede" value="ok">
+                        <input type="hidden" class="form-check-input" id="check1_" name="devrede" value="">YKC
                         DEVREDE Mİ?
                     </label>
                 </div>
                 <br>
                 <div class="form-check-inline">
                     <label class="form-check-label" for="check2">
-                        <input type="checkbox" class="form-check-input" id="check2" name="boya" value="ok">BOYA ATIYOR
+                        <input type="checkbox" class="form-check-input" id="check2" name="boya" value="ok">
+                        <input type="hidden" class="form-check-input" id="check2_" name="boya" value="">BOYA ATIYOR
                         MU?
                     </label>
                 </div>
@@ -75,21 +79,24 @@
                 <br>
                 <div class="form-check-inline">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" id="check4" name="klavuz" value="ok">Klavuz
+                        <input type="checkbox" class="form-check-input" id="check4" name="klavuz" value="ok">
+                        <input type="hidden" class="form-check-input" id="check4_" name="klavuz" value="">Klavuz
                         Uygun mu?
                     </label>
                 </div>
                 <br>
                 <div class="form-check-inline">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" id="check5" name="ofuygun" value="ok">Ayarlar
+                        <input type="checkbox" class="form-check-input" id="check5" name="ofuygun" value="ok">
+                        <input type="hidden" class="form-check-input" id="check5_" name="ofuygun" value="">Ayarlar
                         Of'a uygun mu?
                     </label>
                 </div>
                 <br>
                 <div class="form-check-inline">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" id="check6" name="etkin" value="ok">YKC etkin
+                        <input type="checkbox" class="form-check-input" id="check6" name="etkin" value="ok">
+                        <input type="hidden" class="form-check-input" id="check6_" name="etkin" value="">YKC etkin
                         çalışıyor mu?
                     </label>
                 </div>
@@ -100,14 +107,132 @@
                 <div class="form-group">
                     <label for="comment">Açıklamalar:</label>
                     <textarea name="aciklama" class="form-control" rows="5" id="comment"></textarea>
+                    <input type="hidden" class="form-check-input" id="check7_" name="aksiyon" value="">
                 </div>
             </div>
 
         </div>
 
+        <select class="form-control" id="ekiplideri" name="elider">
+            <option>EKİP LİDERİ</option>
+            <option>ULVİ ÜSTÜN</option>
+            <option>ERSİN BAŞ</option>
+            <option>TOLGA AKTAŞ</option>
+            <option>ENGİN ALTUNDAL</option>
+            <option>MURAT CENGİZ</option>
+            <option>ÖZKAN DURAN</option>
+            <option>SERDAR DURMAZ</option>
+            <option>YÜCEL TİRYAKİ</option>
+            <option>REŞİT KARABULUT</option>
+            <option>KERİM KIBRIS</option>
+            <option>MURAT ERTÜRK</option>
+            <option>HALİT MERTTÜRK</option>
+            <option>HAYRULLAH KÜÇÜK</option>
+            <option>BARIŞ ÖZTÜRK</option>
+            <option>BERAT KAYA</option>
+            <option>SEZGİN UYSAL</option>
+            <option>ERDEM ONUR</option>
+            <option>ERKAN ÖZTÜRK</option>
+            <option>CEM YEŞİLYURT</option>
+            <option>ERTUĞRUL YALÇIN</option>
+            <option>SELÇUK KASABOĞLU</option>
+            <option>SEDAT SEZGİN</option>
+            <option>LEVENT KUŞÇU</option>
+            <option>SERACETTİN ÖZTÜRKOĞLU</option>
+            <option>İLKAY PERDAHÇIOĞLU</option>
+            <option>LEVENT ÜRÜN</option>
+            <option>MURAT HOŞBAŞ</option>
+            <option>FATİH DEMİRCAN</option>
+            <option>SUAT İPEK</option>
+            <option>İLHAN AKPINAR</option>
+            <option>MUSTAFA KARAGÜL</option>
+            <option>FATİH TÜRKMEN</option>
+            <option>MURAT KİBRİTÇİ</option>
+            <option>TURGUT KAPLAN</option>
+            <option>AYDOĞAN BOZKURT</option>
+            <option>FİKRET KURT</option>
+            <option>ÖZKAN ÇAĞLAR</option>
+            <option>EJDER ÖZDEMİR</option>
+            <option>GÖKHAN YILDIRIM</option>
+            <option>KENAN AYGÜN</option>
+            <option>YUSUF DUMAN</option>
+            <option>SERKAN AKTEPE</option>
+            <option>AHMET TOK</option>
+            <option>SELÇUK SARI</option>
+            <option>CEM ÖNAL</option>
+            <option>MUHAMMED KÜÇÜK</option>
+            <option>ENES BAYRAKTAR</option>
+            <option>ERGÜN OZAN</option>
+            <option>ÖZGÜR DEMİR</option>
+            <option>ERHAN DİNÇ</option>
+            <option>AYTAÇ TEMİZEL</option>
+            <option></option>
+
+
+        </select>
+
+        <br>
+
+
+        <select class="form-control" id="puan" name="puan">
+            <option>Puan Verin:</option>
+            <option>100</option>
+            <option>90</option>
+            <option>80</option>
+            <option>60</option>
+            <option>40</option>
+            <option>20</option>
+            <option>0</option>
+
+
+        </select>
+        <br>
+
+
+        <select class="form-control" id="alansorumlusu" name="alansor">
+            <option>ALAN SORUMLUSU</option>
+            <option>FİKRİ HEBİLOĞLU</option>
+            <option>BATUHAN ÇELENK</option>
+            <option>ULAŞ ÖZTEN</option>
+            <option>AZİZ USTABAŞI</option>
+            <option>VEDAT ORAN</option>
+            <option>GÖKHAN YİĞİT</option>
+            <option>ŞAHİN GÖKDEN</option>
+            <option>SERKAN TAŞ</option>
+            <option>ERSİN DEMİREL</option>
+            <option>YASİN HACETOĞLU</option>
+
+
+        </select>
+        <br>
+
         <button type="submit" class="btn btn-primary">Kaydet</button>&nbsp;
-        <button type="button" class="btn btn-danger">Dışa Aktar</button>
+        <button onclick="hepsiniAl()" type="button" class="btn btn-danger">Dışa Aktar</button>
     </form>
+
+    <select onchange="tamamla(this)" class="form-control" id="tamamlama" name="tamamlama">
+        <option>Otomatik doldur</option>
+        <option>Smooth değerleri yüksek.</option>
+        <option>A kamerası focus uygun değil.</option>
+        <option>B kamerası focus uygun değil.</option>
+        <option>C kamerası focus uygun değil.</option>
+        <option>D kamerası focus uygun değil.</option>
+        <option>Ayarlar ofa göre değil.</option>
+        <option>Kamera ışıkları parlak.</option>
+        <option>Boya atmıyor. Yana alınmış.</option>
+        <option>Boya tıkanmış.</option>
+        <option>Smooth değerleri düşürüldü.</option>
+        <option>Kamera ışıkları kısıldı, smooth değerleri düşürüldü.</option>
+        <option>Ekip liderine bilgi verildi.</option>
+        <option>Profil yüzeyinden su geliyor.</option>
+        <option>Üretime giriş. H.Uzun ayarladı.</option>
+        <option>Üretime giriş. İ.Sevindik ayarladı.</option>
+        <option>13</option>
+        <option>14</option>
+        <option>16</option>
+
+    </select>
+
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script>
 <script>
@@ -140,22 +265,29 @@ function serializeToJson(serializer){
 
 
      function kontrol(form){
-      //alert("test aşaması");
-      //kalite seçilmişse
-      if(document.getElementById("check3").checked) {
-    document.getElementById('check3_').disabled = true;
+     soru = confirm("Kaydedilecek, emin misiniz?");
+     	if (!soru) {return false;}
+     
+     
+      inp_list = ["check1", "check2", "check3", "check4", "check5", "check6"];
+      for(inp in inp_list){
+      
+         if(document.getElementById(inp_list[inp]).checked) {
+    		document.getElementById(inp_list[inp] + '_').disabled = true;
     }
     else{
-    	document.getElementById('check3_').disabled = false;
+    	document.getElementById(inp_list[inp] + '_').disabled = false;
     }
+      
+      }
+   
     
        data_ = serializeToJson($(form).serializeArray());
        alert(JSON.stringify(data_));
-       if (data_ in global_data == false){
-       	global_data.push(data_);
-       }
+       form.reset();
+       return setItem(hatlar.value.toString(), data_);
        //ExportData(data_);
-       return false;
+       
 
      }
      function tarih_al(){
@@ -177,6 +309,50 @@ return newdate;
      	return v;
 
      }
+
+Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+
+function setItem(key, val){
+
+	
+		localStorage.setObj(key, val);
+	
+	return false;
+
+}
+
+function getItem(key){
+	return localStorage.getObj(key);
+
+}
+
+function test(){
+	alert(JSON.stringify(getItem(hatlar.value.toString())))
+}
+
+function hepsiniAl(){
+	soru = confirm("Eminseniz Excell dosyası indirilecek!");
+	if (!soru) {return false;}
+	hatlst = hatlar.getElementsByTagName("option");
+	
+	setlst = [];
+	for(i in hatlst){
+		item = getItem(hatlst[i].value);
+		if(item != null){
+		setlst.push(item);
+		}
+	}
+	ExportData(setlst);
+}
+
+function tamamla(el){
+	comment.value += el.value;
+}
 function init(){
      tarih.value = tarih_al();
      vardiya.value  = vardiya_al();
@@ -184,6 +360,7 @@ function init(){
 }
 
 init();
+
 
 </script>
 
