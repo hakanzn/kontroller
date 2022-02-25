@@ -237,79 +237,82 @@
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script>
 <script>
-
-function serializeToJson(serializer){
+function serializeToJson(serializer) {
     var _string = '{';
-    for(var ix in serializer)
-    {
+    for (var ix in serializer) {
         var row = serializer[ix];
         _string += '"' + row.name + '":"' + row.value + '",';
     }
-    var end =_string.length - 1;
+    var end = _string.length - 1;
     _string = _string.substr(0, end);
     _string += '}';
     console.log('_string: ', _string);
     return JSON.parse(_string);
 }
-    function ExportData(data)
-    {
-            filename='reports.xlsx';
-            
-            
-       
-        var ws = XLSX.utils.json_to_sheet(data);
-        var wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, "TEST");
-        XLSX.writeFile(wb,filename);
-     }
+
+function ExportData(data) {
+    filename = 'reports.xlsx';
 
 
 
-     function kontrol(form){
-     soru = confirm("Kaydedilecek, emin misiniz?");
-     	if (!soru) {return false;}
-     
-     
-      inp_list = ["check1", "check2", "check3", "check4", "check5", "check6"];
-      for(inp in inp_list){
-      
-         if(document.getElementById(inp_list[inp]).checked) {
-    		document.getElementById(inp_list[inp] + '_').disabled = true;
+    var ws = XLSX.utils.json_to_sheet(data);
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "TEST");
+    XLSX.writeFile(wb, filename);
+}
+
+
+
+function kontrol(form) {
+    soru = confirm("Kaydedilecek, emin misiniz?");
+    if (!soru) {
+        return false;
     }
-    else{
-    	document.getElementById(inp_list[inp] + '_').disabled = false;
+    if (alansorumlusu.value == 'ALAN SORUMLUSU' || kalip.value == '' || hatlar.value == 'Hat Seçin' || puan.value == 'Puan Verin:' || ekiplideri.value == 'EKİP LİDERİ') {
+        alert("Zorunlu alanları doldurun!");
+        return false;
     }
-      
-      }
-   
-    
-       data_ = serializeToJson($(form).serializeArray());
-       alert(JSON.stringify(data_));
-       form.reset();
-       return setItem(hatlar.value.toString(), data_);
-       //ExportData(data_);
-       
 
-     }
-     function tarih_al(){
-     var dateObj = new Date();
-var month = dateObj.getUTCMonth() + 1; //months from 1-12
-var day = dateObj.getUTCDate();
-var year = dateObj.getUTCFullYear().toString().substr(2,2);
+    inp_list = ["check1", "check2", "check3", "check4", "check5", "check6"];
+    for (inp in inp_list) {
 
-newdate = day + "." + month + "." + year;
-return newdate;
-     }
-     function vardiya_al(){
-     v= "";
-     	saat = new Date().getHours();
-     	console.log(saat);
-     	if (saat < 8) v = 3;
-     	else if (saat < 16) v = 1;
-     	else if (saat < 24 ) v = 2;
-     	return v;
+        if (document.getElementById(inp_list[inp]).checked) {
+            document.getElementById(inp_list[inp] + '_').disabled = true;
+        } else {
+            document.getElementById(inp_list[inp] + '_').disabled = false;
+        }
 
-     }
+    }
+
+
+    data_ = serializeToJson($(form).serializeArray());
+    alert(JSON.stringify(data_));
+    return setItem(hatlar.value.toString(), data_);
+    //ExportData(data_);
+
+
+}
+
+function tarih_al() {
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear().toString().substr(2, 2);
+
+    newdate = day + "." + month + "." + year;
+    return newdate;
+}
+
+function vardiya_al() {
+    v = "";
+    saat = new Date().getHours();
+    console.log(saat);
+    if (saat < 8) v = 3;
+    else if (saat < 16) v = 1;
+    else if (saat < 24) v = 2;
+    return v;
+
+}
 
 Storage.prototype.setObj = function(key, obj) {
     return this.setItem(key, JSON.stringify(obj))
@@ -318,50 +321,54 @@ Storage.prototype.getObj = function(key) {
     return JSON.parse(this.getItem(key))
 }
 
-function setItem(key, val){
+function setItem(key, val) {
 
-	
-		localStorage.setObj(key, val);
-	
-	return false;
 
-}
-
-function getItem(key){
-	return localStorage.getObj(key);
+    localStorage.setObj(key, val);
+    form.reset();
+    tarih.value = tarih_al();
+    vardiya.value = vardiya_al();
+    return false;
 
 }
 
-function test(){
-	alert(JSON.stringify(getItem(hatlar.value.toString())))
+function getItem(key) {
+    return localStorage.getObj(key);
+
 }
 
-function hepsiniAl(){
-	soru = confirm("Eminseniz Excell dosyası indirilecek!");
-	if (!soru) {return false;}
-	hatlst = hatlar.getElementsByTagName("option");
-	
-	setlst = [];
-	for(i in hatlst){
-		item = getItem(hatlst[i].value);
-		if(item != null){
-		setlst.push(item);
-		}
-	}
-	ExportData(setlst);
+function test() {
+    alert(JSON.stringify(getItem(hatlar.value.toString())))
 }
 
-function tamamla(el){
-	comment.value += el.value;
+function hepsiniAl() {
+    soru = confirm("Eminseniz Excell dosyası indirilecek!");
+    if (!soru) {
+        return false;
+    }
+    hatlst = hatlar.getElementsByTagName("option");
+
+    setlst = [];
+    for (i in hatlst) {
+        item = getItem(hatlst[i].value);
+        if (item != null) {
+            setlst.push(item);
+        }
+    }
+    ExportData(setlst);
 }
-function init(){
-     tarih.value = tarih_al();
-     vardiya.value  = vardiya_al();
-     global_data = [];
+
+function tamamla(el) {
+    comment.value += el.value;
+}
+
+function init() {
+    tarih.value = tarih_al();
+    vardiya.value = vardiya_al();
+    global_data = [];
 }
 
 init();
-
 
 </script>
 
