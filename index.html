@@ -56,7 +56,7 @@
                 <div class="form-check-inline">
                     <label class="form-check-label" for="check1">
                         <input type="checkbox" class="form-check-input" id="check1" name="devrede" value="E">
-                        <input type="hidden" class="form-check-input" id="check1_" name="devrede" value="">YKC
+                        <input type="hidden" class="form-check-input" id="check1_" name="devrede" value="H">YKC
                         DEVREDE Mİ?
                     </label>
                 </div>
@@ -64,7 +64,7 @@
                 <div class="form-check-inline">
                     <label class="form-check-label" for="check2">
                         <input type="checkbox" class="form-check-input" id="check2" name="boya" value="E">
-                        <input type="hidden" class="form-check-input" id="check2_" name="boya" value="">BOYA ATIYOR
+                        <input type="hidden" class="form-check-input" id="check2_" name="boya" value="H">BOYA ATIYOR
                         MU?
                     </label>
                 </div>
@@ -72,7 +72,7 @@
                 <div class="form-check-inline">
                     <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" id="check3" name="kalite" value="E">
-                        <input type="hidden" class="form-check-input" id="check3_" name="kalite" value="">Kaliteye
+                        <input type="hidden" class="form-check-input" id="check3_" name="kalite" value="H">Kaliteye
                         Haber Verildi mi?
                     </label>
                 </div>
@@ -80,7 +80,7 @@
                 <div class="form-check-inline">
                     <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" id="check4" name="klavuz" value="E">
-                        <input type="hidden" class="form-check-input" id="check4_" name="klavuz" value="">Klavuz
+                        <input type="hidden" class="form-check-input" id="check4_" name="klavuz" value="H">Klavuz
                         Uygun mu?
                     </label>
                 </div>
@@ -88,7 +88,7 @@
                 <div class="form-check-inline">
                     <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" id="check5" name="ofuygun" value="E">
-                        <input type="hidden" class="form-check-input" id="check5_" name="ofuygun" value="">Ayarlar
+                        <input type="hidden" class="form-check-input" id="check5_" name="ofuygun" value="H">Ayarlar
                         Of'a uygun mu?
                     </label>
                 </div>
@@ -96,7 +96,7 @@
                 <div class="form-check-inline">
                     <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" id="check6" name="etkin" value="E">
-                        <input type="hidden" class="form-check-input" id="check6_" name="etkin" value="">YKC etkin
+                        <input type="hidden" class="form-check-input" id="check6_" name="etkin" value="H">YKC etkin
                         çalışıyor mu?
                     </label>
                 </div>
@@ -279,6 +279,7 @@ function kontrol(form) {
 
 
     data_ = serializeToJson($(form).serializeArray());
+    data_.puan = parseInt(data_.puan);
     alert(JSON.stringify(data_));
     return setItem(hatlar.value.toString(), data_);
     //ExportData(data_);
