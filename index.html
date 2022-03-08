@@ -282,7 +282,7 @@ function kontrol(form) {
     data_.puan = parseInt(data_.puan);
     alert(JSON.stringify(data_));
     hat = hatlar.value.toString();
-    if("hatlist" in getItem(hat)){
+    if(getItem(hat) != null && "hatlist" in getItem(hat)){
         ans = confirm("Bu hat bu vardiyada kontrol edilmiş. Üzerine yazılması için OK, yeni kayıt yazmak için CANCEL.");
 	if (!ans ){
 	    return setItem(hat + "-2", data_);
