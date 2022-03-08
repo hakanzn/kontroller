@@ -352,7 +352,7 @@ function hepsiniAl() {
 
     setlst = [];
     for (i in hatlst) {
-        item = getItem(hatlst[i].value);
+        item = getItem(hatlst[i].value || hatlist[i].value + "-2");
         if (item != null) {
             setlst.push(item);
         }
